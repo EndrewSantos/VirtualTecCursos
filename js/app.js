@@ -1,3 +1,36 @@
+let isPremium = localStorage.getItem("premium") === "true";
+function openAcervo() {
+  document.getElementById("acervo").style.display = "block";
+}
+function openAcervo() {
+
+  if (!isPremium) {
+    alert("O acervo completo é exclusivo para assinantes Premium 🔒");
+    return;
+  }
+
+  document.getElementById("acervo").style.display = "block";
+}
+const subscribeBtn = document.getElementById("subscribe-btn");
+const premiumStatus = document.getElementById("premium-status");
+
+function updatePremiumUI() {
+  if (isPremium) {
+    premiumStatus.innerText = "Plano atual: Premium 🚀";
+  } else {
+    premiumStatus.innerText = "Plano atual: Gratuito";
+  }
+}
+
+subscribeBtn.onclick = () => {
+  localStorage.setItem("premium", "true");
+  isPremium = true;
+  updatePremiumUI();
+  alert("Parabéns! Agora você é Premium 🚀");
+};
+
+updatePremiumUI();
+
 const courses = {
   excel: {
     title: "Excel Avançado",
