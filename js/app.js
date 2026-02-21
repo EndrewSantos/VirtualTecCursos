@@ -90,7 +90,6 @@ course.modules.forEach((module, index) => {
   li.appendChild(content);
 
   moduleList.appendChild(li);
-});
   });
 
   const progressPercent = (savedProgress / course.modules.length) * 100;
