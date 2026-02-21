@@ -55,6 +55,17 @@ function openCourse(courseId) {
   const progressBar = document.getElementById("progress-bar");
   const continueBtn = document.getElementById("continue-btn");
 
+  continueBtn.onclick = () => {
+  let progress = parseInt(localStorage.getItem(currentCourse)) || 0;
+  const totalModules = courses[currentCourse].modules.length;
+
+  if (progress < totalModules) {
+    progress++;
+    localStorage.setItem(currentCourse, progress);
+  }
+
+  openCourse(currentCourse);
+};
   const course = courses[courseId];
  const savedProgress = parseInt(localStorage.getItem(courseId)) || 0;
 
