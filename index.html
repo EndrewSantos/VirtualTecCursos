@@ -57,29 +57,21 @@
 
         <div class="course-grid">
 
-          <div class="course-card">
-            <span class="badge">Pacote Office</span>
-            <h3>Excel Avançado</h3>
-            <p>Domine fórmulas avançadas, tabelas dinâmicas e dashboards profissionais no Excel.</p>
-            <hr>
-            <div class="course-info">
-              <span>⏱ 30h</span>
-              <span> Fundação Bradesco</span>
-              <span> 6 módulos</span>
-            </div>
-          </div>
+          <div class="course-grid">
 
-          <div class="course-card">
-            <span class="badge">Tecnologia</span>
-            <h3>Lógica de Programação</h3>
-            <p>Aprenda os fundamentos da lógica de programação e resolução de problemas computacionais.</p>
-            <hr>
-            <div class="course-info">
-              <span>⏱ 40h</span>
-              <span> Fundação Bradesco</span>
-              <span> 6 módulos</span>
-            </div>
-          </div>
+  <div class="course-card" onclick="openCourse('excel')">
+    <span class="badge">Pacote Office</span>
+    <h3>Excel Avançado</h3>
+    <p>Domine fórmulas avançadas, tabelas dinâmicas e dashboards profissionais no Excel.</p>
+  </div>
+
+  <div class="course-card" onclick="openCourse('logica')">
+    <span class="badge">Tecnologia</span>
+    <h3>Lógica de Programação</h3>
+    <p>Aprenda os fundamentos da lógica de programação.</p>
+  </div>
+
+</div>
 
         </div>
       </section>
@@ -95,6 +87,24 @@
 
     </div>
 
+    <!-- COURSE PANEL -->
+<div id="course-panel" class="course-panel hidden">
+  <div class="panel-content">
+    <button class="close-btn" onclick="closeCourse()">X</button>
+
+    <h2 id="course-title"></h2>
+
+    <div class="progress-container">
+      <div id="progress-bar"></div>
+    </div>
+
+    <ul id="module-list"></ul>
+
+    <button id="continue-btn" class="continue-btn">
+      Iniciar Curso
+    </button>
+  </div>
+</div>
   </main>
 
   <!-- JS -->
