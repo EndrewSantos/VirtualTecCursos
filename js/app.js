@@ -67,15 +67,16 @@ function closeCourse() {
   document.getElementById("course-panel").classList.add("hidden");
 }
 
-ddocument.getElementById("continue-btn").addEventListener("click", () => {
+document.getElementById("continue-btn").addEventListener("click", () => {
   if (!currentCourse) return;
 
   let progress = parseInt(localStorage.getItem(currentCourse)) || 0;
   const totalModules = courses[currentCourse].modules.length;
 
-  // Se já terminou → finalizar
+  // Se já terminou → reinicia
   if (progress >= totalModules) {
-    closeCourse();
+    localStorage.removeItem(currentCourse); // Zera progresso
+    closeCourse(); // Fecha painel
     return;
   }
 
