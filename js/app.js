@@ -1,4 +1,26 @@
-let isPremium = localStorage.getItem("premium") === "true";
+document.addEventListener("DOMContentLoaded", () => {
+
+  let isPremium = localStorage.getItem("premium") === "true";
+
+  const subscribeBtn = document.getElementById("subscribe-btn");
+  const premiumStatus = document.getElementById("premium-status");
+
+  function updatePremiumUI() {
+    premiumStatus.innerText = isPremium 
+      ? "Plano atual: Premium 🚀" 
+      : "Plano atual: Gratuito";
+  }
+
+  subscribeBtn.onclick = () => {
+    localStorage.setItem("premium", "true");
+    isPremium = true;
+    updatePremiumUI();
+    alert("Agora você é Premium 🚀");
+  };
+
+  updatePremiumUI();
+
+});let isPremium = localStorage.getItem("premium") === "true";
 function openAcervo() {
   document.getElementById("acervo").style.display = "block";
 }
