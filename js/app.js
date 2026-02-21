@@ -63,34 +63,41 @@ function openCourse(courseId) {
 
 course.modules.forEach((module, index) => {
 
-  const li = document.createElement("li");
-  li.classList.add("module-item");
+  // Criar item da trilha
+  const moduleItem = document.createElement("li");
+  moduleItem.classList.add("module-item");
 
-  const circle = document.createElement("div");
-  circle.classList.add("module-circle");
-  circle.innerText = index + 1;
+  // Criar círculo numerado
+  const moduleCircle = document.createElement("div");
+  moduleCircle.classList.add("module-circle");
+  moduleCircle.innerText = index + 1;
 
+  // Marcar como concluído se já passou
   if (index < savedProgress) {
-    circle.classList.add("completed");
+    moduleCircle.classList.add("completed");
   }
 
-  const content = document.createElement("div");
-  content.classList.add("module-content");
+  // Criar área de texto
+  const moduleContent = document.createElement("div");
+  moduleContent.classList.add("module-content");
 
-  const title = document.createElement("h4");
-  title.innerText = module.name;
+  // Título do módulo
+  const moduleTitle = document.createElement("h4");
+  moduleTitle.innerText = module.name;
 
-  const desc = document.createElement("p");
-  desc.innerText = module.desc;
+  // Descrição do módulo
+  const moduleDesc = document.createElement("p");
+  moduleDesc.innerText = module.desc;
 
-  content.appendChild(title);
-  content.appendChild(desc);
+  // Montar estrutura
+  moduleContent.appendChild(moduleTitle);
+  moduleContent.appendChild(moduleDesc);
 
-  li.appendChild(circle);
-  li.appendChild(content);
+  moduleItem.appendChild(moduleCircle);
+  moduleItem.appendChild(moduleContent);
 
-  moduleList.appendChild(li);
-  });
+  moduleList.appendChild(moduleItem);
+});
 
   const progressPercent = (savedProgress / course.modules.length) * 100;
   progressBar.style.width = progressPercent + "%";
