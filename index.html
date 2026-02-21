@@ -4,10 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VirtualTec</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -26,31 +22,23 @@
 
     <div class="menu-section">
       <p class="menu-title">CONTA</p>
-      <div class="menu-item" data-page="config">Configurações/Suporte</div>
+      <div class="menu-item" data-page="config">Configurações</div>
       <div class="menu-item" data-page="perfil">Perfil</div>
-      <div class="menu-item" data-page="indicacoes">Programa de Indicações</div>
-      <div class="menu-item" data-page="termos">Termos e Condições</div>
-      <div class="menu-item" data-page="sobre">Sobre Nós</div>
+      <div class="menu-item" data-page="indicacoes">Indicações</div>
+      <div class="menu-item" data-page="termos">Termos</div>
+      <div class="menu-item" data-page="sobre">Sobre</div>
     </div>
   </aside>
 
   <!-- MAIN -->
   <main class="main">
 
-    <!-- TOPBAR -->
-    <div class="topbar">
-      <div class="user-pill">Usuário</div>
-    </div>
-
-    <!-- PAGE CONTAINER -->
     <div id="page-content">
 
-      <!-- CURSOS -->
+      <!-- CURSOS (gratuitos) -->
       <section id="cursos" class="page active">
         <h1>Cursos Profissionalizantes</h1>
-        <p class="subtitle">
-          Escolha entre cursos gratuitos e profissionalizantes
-        </p>
+        <p class="subtitle">Cursos gratuitos para aprendizado</p>
 
         <div class="course-grid">
 
@@ -63,13 +51,13 @@
           <div class="course-card" data-course="marketing">
             <span class="badge">Negócios</span>
             <h3>Marketing Digital</h3>
-            <p>Estratégias para crescimento online.</p>
+            <p>Estratégias para crescer online.</p>
           </div>
 
           <div class="course-card" data-course="excel">
-            <span class="badge">Pacote Office</span>
+            <span class="badge">Office</span>
             <h3>Excel Avançado</h3>
-            <p>Fórmulas, tabelas dinâmicas e dashboards.</p>
+            <p>Fórmulas e dashboards profissionais.</p>
           </div>
 
           <div class="course-card" data-course="logica">
@@ -81,13 +69,18 @@
         </div>
       </section>
 
-      <!-- OUTRAS PÁGINAS -->
-      <section id="acervo" class="page"></section>
-      <section id="assinatura" class="page">
-        <h2>Plano Premium</h2>
-        <button id="subscribe-btn">Assinar Premium</button>
-        <p id="premium-status"></p>
+      <!-- ACERVO (pode colocar conteúdo depois) -->
+      <section id="acervo" class="page">
+        <h2>Acervo</h2>
+        <p>Conteúdo exclusivo (se quiser adicionar depois).</p>
       </section>
+
+      <!-- ASSINATURA (opcional) -->
+      <section id="assinatura" class="page">
+        <h2>Assinatura</h2>
+        <p>Plano Premium (opcional).</p>
+      </section>
+
       <section id="config" class="page"></section>
       <section id="perfil" class="page"></section>
       <section id="indicacoes" class="page"></section>
@@ -116,9 +109,5 @@
   </main>
 
   <script src="js/app.js"></script>
-</body>
-</html>
-</div>
-
 </body>
 </html>
