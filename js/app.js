@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-
   let isPremium = localStorage.getItem("premium") === "true";
 
   const subscribeBtn = document.getElementById("subscribe-btn");
   const premiumStatus = document.getElementById("premium-status");
+  const acervo = document.getElementById("acervo");
 
   function updatePremiumUI() {
-    premiumStatus.innerText = isPremium 
-      ? "Plano atual: Premium 🚀" 
+    premiumStatus.innerText = isPremium
+      ? "Plano atual: Premium 🚀"
       : "Plano atual: Gratuito";
   }
 
@@ -18,31 +18,16 @@ document.addEventListener("DOMContentLoaded", () => {
     alert("Agora você é Premium 🚀");
   };
 
+  function openAcervo() {
+    if (!isPremium) {
+      alert("O acervo completo é exclusivo para assinantes Premium 🔒");
+      return;
+    }
+    acervo.style.display = "block";
+  }
+
   updatePremiumUI();
-
-});let isPremium = localStorage.getItem("premium") === "true";
-function openAcervo() {
-  document.getElementById("acervo").style.display = "block";
-}
-function openAcervo() {
-
-  if (!isPremium) {
-    alert("O acervo completo é exclusivo para assinantes Premium 🔒");
-    return;
-  }
-
-  document.getElementById("acervo").style.display = "block";
-}
-const subscribeBtn = document.getElementById("subscribe-btn");
-const premiumStatus = document.getElementById("premium-status");
-
-function updatePremiumUI() {
-  if (isPremium) {
-    premiumStatus.innerText = "Plano atual: Premium 🚀";
-  } else {
-    premiumStatus.innerText = "Plano atual: Gratuito";
-  }
-}
+});
 
 subscribeBtn.onclick = () => {
   localStorage.setItem("premium", "true");
