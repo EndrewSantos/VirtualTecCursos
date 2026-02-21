@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // --- Estado Premium ---
+  // PREMIUM
   let isPremium = localStorage.getItem("premium") === "true";
 
   const subscribeBtn = document.getElementById("subscribe-btn");
   const premiumStatus = document.getElementById("premium-status");
-  const acervo = document.getElementById("acervo");
+  const acervoPage = document.getElementById("acervo");
 
   function updatePremiumUI() {
     premiumStatus.innerText = isPremium
@@ -24,24 +24,22 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("O acervo completo é exclusivo para assinantes Premium 🔒");
       return;
     }
-    acervo.style.display = "block";
+    acervoPage.classList.add("active");
   }
 
-  // Botão de abrir acervo
-  const btnAcervo = document.getElementById("btn-acervo");
-  if (btnAcervo) btnAcervo.onclick = openAcervo;
+  document.querySelector('[data-page="acervo"]').onclick = openAcervo;
 
   updatePremiumUI();
 
-  // --- Cursos ---
+  // CURSOS
   const courses = {
     excel: {
       title: "Excel Avançado",
       modules: [
-        { name: "Introdução ao Excel", desc: "Visão geral da interface e conceitos básicos." },
-        { name: "Fórmulas Avançadas", desc: "PROCV, SOMASES e funções lógicas." },
+        { name: "Introdução ao Excel", desc: "Visão geral da interface." },
+        { name: "Fórmulas Avançadas", desc: "PROCV, SOMASES e funções." },
         { name: "Tabelas Dinâmicas", desc: "Criação e personalização." },
-        { name: "Dashboards", desc: "Gráficos e indicadores visuais." },
+        { name: "Dashboards", desc: "Gráficos profissionais." },
         { name: "Automação VBA", desc: "Introdução à automação." }
       ]
     },
@@ -50,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       modules: [
         { name: "Algoritmos", desc: "Conceitos fundamentais." },
         { name: "Variáveis", desc: "Tipos e armazenamento." },
-        { name: "Condicionais", desc: "If, Else e Switch." },
+        { name: "Condicionais", desc: "If e Else." },
         { name: "Loops", desc: "For e While." },
         { name: "Funções", desc: "Organização do código." }
       ]
@@ -69,10 +67,10 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Marketing Digital",
       modules: [
         { name: "Fundamentos", desc: "Conceitos iniciais." },
-        { name: "Redes Sociais", desc: "Estratégias orgânicas." },
-        { name: "Tráfego Pago", desc: "Anúncios online." },
+        { name: "Redes Sociais", desc: "Estratégias." },
+        { name: "Tráfego Pago", desc: "Anúncios." },
         { name: "Copywriting", desc: "Escrita persuasiva." },
-        { name: "Funil de Vendas", desc: "Conversão e retenção." }
+        { name: "Funil de Vendas", desc: "Conversão." }
       ]
     }
   };
@@ -86,62 +84,51 @@ document.addEventListener("DOMContentLoaded", () => {
     const title = document.getElementById("course-title");
     const moduleList = document.getElementById("module-list");
     const progressBar = document.getElementById("progress-bar");
-    const continueBtn = document.getElementById("continue-btn");
     const progressText = document.getElementById("progress-text");
+    const continueBtn = document.getElementById("continue-btn");
 
     const course = courses[courseId];
     const savedProgress = parseInt(localStorage.getItem(courseId)) || 0;
 
-    // Atualiza título
     title.innerText = course.title;
-
-    // Limpa lista de módulos
     moduleList.innerHTML = "";
 
-    // Monta módulos
     course.modules.forEach((module, index) => {
-      const moduleItem = document.createElement("li");
-      moduleItem.classList.add("module-item");
+      const item = document.createElement("li");
+      item.classList.add("module-item");
 
-      const moduleCircle = document.createElement("div");
-      moduleCircle.classList.add("module-circle");
-      moduleCircle.innerText = index + 1;
-      if (index < savedProgress) moduleCircle.classList.add("completed");
+      const circle = document.createElement("div");
+      circle.classList.add("module-circle");
+      circle.innerText = index + 1;
+      if (index < savedProgress) circle.classList.add("completed");
 
-      const moduleContent = document.createElement("div");
-      moduleContent.classList.add("module-content");
+      const content = document.createElement("div");
+      content.classList.add("module-content");
 
-      const moduleTitle = document.createElement("h4");
-      moduleTitle.innerText = module.name;
+      const h4 = document.createElement("h4");
+      h4.innerText = module.name;
 
-      const moduleDesc = document.createElement("p");
-      moduleDesc.innerText = module.desc;
+      const p = document.createElement("p");
+      p.innerText = module.desc;
 
-      moduleContent.appendChild(moduleTitle);
-      moduleContent.appendChild(moduleDesc);
+      content.appendChild(h4);
+      content.appendChild(p);
 
-      moduleItem.appendChild(moduleCircle);
-      moduleItem.appendChild(moduleContent);
+      item.appendChild(circle);
+      item.appendChild(content);
 
-      moduleList.appendChild(moduleItem);
+      moduleList.appendChild(item);
     });
 
-    // Atualiza barra de progresso
-    const totalModules = course.modules.length;
-    const percentage = Math.floor((savedProgress / totalModules) * 100);
+    const total = course.modules.length;
+    const percentage = Math.floor((savedProgress / total) * 100);
     progressBar.style.width = percentage + "%";
     progressText.innerText = `Progresso: ${percentage}%`;
 
-    // Atualiza botão continuar
-    if (savedProgress == 0) {
-      continueBtn.innerText = "Iniciar Curso";
-    } else if (savedProgress < totalModules) {
-      continueBtn.innerText = "Continuar";
-    } else {
-      continueBtn.innerText = "Finalizar";
-    }
+    if (savedProgress == 0) continueBtn.innerText = "Iniciar Curso";
+    else if (savedProgress < total) continueBtn.innerText = "Continuar";
+    else continueBtn.innerText = "Finalizar";
 
-    // Mostra painel do curso
     panel.classList.remove("hidden");
   }
 
@@ -149,28 +136,24 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("course-panel").classList.add("hidden");
   }
 
-  const continueBtn = document.getElementById("continue-btn");
-  if (continueBtn) {
-    continueBtn.addEventListener("click", () => {
-      if (!currentCourse) return;
-
-      let progress = parseInt(localStorage.getItem(currentCourse)) || 0;
-      const totalModules = courses[currentCourse].modules.length;
-
-      if (progress >= totalModules) {
-        localStorage.removeItem(currentCourse); // Reinicia progresso
-        closeCourse();
-        return;
-      }
-
-      progress++;
-      localStorage.setItem(currentCourse, progress);
-      openCourse(currentCourse);
-    });
-  }
-
-  // --- Opcional: inicializar botões de cursos ---
-  document.querySelectorAll(".course-btn").forEach(btn => {
-    btn.onclick = () => openCourse(btn.dataset.course);
+  document.querySelectorAll(".course-card").forEach(card => {
+    card.onclick = () => openCourse(card.dataset.course);
   });
+
+  document.getElementById("continue-btn").onclick = () => {
+    if (!currentCourse) return;
+
+    let progress = parseInt(localStorage.getItem(currentCourse)) || 0;
+    const total = courses[currentCourse].modules.length;
+
+    if (progress >= total) {
+      localStorage.removeItem(currentCourse);
+      closeCourse();
+      return;
+    }
+
+    progress++;
+    localStorage.setItem(currentCourse, progress);
+    openCourse(currentCourse);
+  };
 });
