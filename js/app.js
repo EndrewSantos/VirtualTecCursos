@@ -61,15 +61,36 @@ function openCourse(courseId) {
   title.innerText = course.title;
   moduleList.innerHTML = "";
 
-  course.modules.forEach((module, index) => {
-    const li = document.createElement("li");
-    li.innerText = module;
+course.modules.forEach((module, index) => {
 
-    if (index < savedProgress) {
-      li.classList.add("completed");
-    }
+  const li = document.createElement("li");
+  li.classList.add("module-item");
 
-    moduleList.appendChild(li);
+  const circle = document.createElement("div");
+  circle.classList.add("module-circle");
+  circle.innerText = index + 1;
+
+  if (index < savedProgress) {
+    circle.classList.add("completed");
+  }
+
+  const content = document.createElement("div");
+  content.classList.add("module-content");
+
+  const title = document.createElement("h4");
+  title.innerText = module.name;
+
+  const desc = document.createElement("p");
+  desc.innerText = module.desc;
+
+  content.appendChild(title);
+  content.appendChild(desc);
+
+  li.appendChild(circle);
+  li.appendChild(content);
+
+  moduleList.appendChild(li);
+});
   });
 
   const progressPercent = (savedProgress / course.modules.length) * 100;
