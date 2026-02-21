@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VirtualTec</title>
+
+  <!-- Fonte -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo">VirtualTec</div>
+
+    <div class="menu-section">
+      <p class="menu-title">PLATAFORMA</p>
+      <div class="menu-item active" data-page="cursos">Cursos</div>
+      <div class="menu-item" data-page="acervo">Acervo</div>
+      <div class="menu-item" data-page="assinatura">Assinatura</div>
+    </div>
+
+    <div class="menu-section">
+      <p class="menu-title">CONTA</p>
+      <div class="menu-item" data-page="config">Configurações/Suporte</div>
+      <div class="menu-item" data-page="perfil">Perfil</div>
+      <div class="menu-item" data-page="indicacoes">Programa de Indicações</div>
+      <div class="menu-item" data-page="termos">Termos e Condições</div>
+      <div class="menu-item" data-page="sobre">Sobre Nós</div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="user-pill">Usuário</div>
+    </div>
+
+    <!-- PAGE CONTAINER -->
+    <div id="page-content">
+
+      <!-- CURSOS (padrão inicial) -->
+      <section id="cursos" class="page active">
+
+        <h1>Cursos Profissionalizantes</h1>
+        <p class="subtitle">
+          Escolha entre 14 cursos gratuitos de instituições renomadas
+        </p>
+
+        <div class="course-grid">
+
+          <div class="course-card">
+            <span class="badge">Pacote Office</span>
+            <h3>Excel Avançado</h3>
+            <p>Domine fórmulas avançadas, tabelas dinâmicas e dashboards profissionais no Excel.</p>
+            <hr>
+            <div class="course-info">
+              <span>⏱ 30h</span>
+              <span> Fundação Bradesco</span>
+              <span> 6 módulos</span>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <span class="badge">Tecnologia</span>
+            <h3>Lógica de Programação</h3>
+            <p>Aprenda os fundamentos da lógica de programação e resolução de problemas computacionais.</p>
+            <hr>
+            <div class="course-info">
+              <span>⏱ 40h</span>
+              <span> Fundação Bradesco</span>
+              <span> 6 módulos</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- OUTRAS PÁGINAS (vazias por enquanto) -->
+      <section id="acervo" class="page"></section>
+      <section id="assinatura" class="page"></section>
+      <section id="config" class="page"></section>
+      <section id="perfil" class="page"></section>
+      <section id="indicacoes" class="page"></section>
+      <section id="termos" class="page"></section>
+      <section id="sobre" class="page"></section>
+
+    </div>
+
+  </main>
+
+  <!-- JS -->
+  <script src="js/app.js"></script>
+
+</body>
+</html>
