@@ -52,7 +52,13 @@ function openCourse(courseId) {
   const progressPercent = (savedProgress / course.modules.length) * 100;
   progressBar.style.width = progressPercent + "%";
 
-  continueBtn.innerText = savedProgress == 0 ? "Iniciar Curso" : "Continuar";
+  if (savedProgress == 0) {
+  continueBtn.innerText = "Iniciar Curso";
+} else if (savedProgress < course.modules.length) {
+  continueBtn.innerText = "Continuar";
+} else {
+  continueBtn.innerText = "Finalizar";
+}
 
   panel.classList.remove("hidden");
 }
@@ -61,15 +67,20 @@ function closeCourse() {
   document.getElementById("course-panel").classList.add("hidden");
 }
 
-document.getElementById("continue-btn").addEventListener("click", () => {
+ddocument.getElementById("continue-btn").addEventListener("click", () => {
   if (!currentCourse) return;
 
   let progress = parseInt(localStorage.getItem(currentCourse)) || 0;
   const totalModules = courses[currentCourse].modules.length;
 
-  if (progress < totalModules) {
-    progress++;
-    localStorage.setItem(currentCourse, progress);
-    openCourse(currentCourse);
+  // Se já terminou → finalizar
+  if (progress >= totalModules) {
+    closeCourse();
+    return;
   }
+
+  // Avança módulo
+  progress++;
+  localStorage.setItem(currentCourse, progress);
+  openCourse(currentCourse);
 });
