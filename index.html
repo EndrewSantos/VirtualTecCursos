@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VirtualTec</title>
 
-  <!-- Fonte -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -47,50 +45,49 @@
     <!-- PAGE CONTAINER -->
     <div id="page-content">
 
-      <!-- CURSOS (padrão inicial) -->
+      <!-- CURSOS -->
       <section id="cursos" class="page active">
-
         <h1>Cursos Profissionalizantes</h1>
         <p class="subtitle">
-          Escolha entre os cursos gratuitos de grandes instituições renomadas
+          Escolha entre cursos gratuitos e profissionalizantes
         </p>
 
         <div class="course-grid">
 
-          <div class="course-grid">
+          <div class="course-card" data-course="html">
+            <span class="badge">Desenvolvimento</span>
+            <h3>HTML e CSS</h3>
+            <p>Crie sites modernos e responsivos.</p>
+          </div>
 
-  <div class="course-card" onclick="openCourse('html')">
-  <span class="badge">Desenvolvimento</span>
-  <h3>HTML e CSS</h3>
-  <p>Aprenda a criar sites modernos e responsivos.</p>
-</div>
+          <div class="course-card" data-course="marketing">
+            <span class="badge">Negócios</span>
+            <h3>Marketing Digital</h3>
+            <p>Estratégias para crescimento online.</p>
+          </div>
 
-<div class="course-card" onclick="openCourse('marketing')">
-  <span class="badge">Negócios</span>
-  <h3>Marketing Digital</h3>
-  <p>Domine estratégias de crescimento online.</p>
-</div>
-            
-  <div class="course-card" onclick="openCourse('excel')">
-    <span class="badge">Pacote Office</span>
-    <h3>Excel Avançado</h3>
-    <p>Domine fórmulas avançadas, tabelas dinâmicas e dashboards profissionais no Excel.</p>
-  </div>
+          <div class="course-card" data-course="excel">
+            <span class="badge">Pacote Office</span>
+            <h3>Excel Avançado</h3>
+            <p>Fórmulas, tabelas dinâmicas e dashboards.</p>
+          </div>
 
-  <div class="course-card" onclick="openCourse('logica')">
-    <span class="badge">Tecnologia</span>
-    <h3>Lógica de Programação</h3>
-    <p>Aprenda os fundamentos da lógica de programação.</p>
-  </div>
-
-</div>
+          <div class="course-card" data-course="logica">
+            <span class="badge">Tecnologia</span>
+            <h3>Lógica de Programação</h3>
+            <p>Fundamentos da programação.</p>
+          </div>
 
         </div>
       </section>
 
-      <!-- OUTRAS PÁGINAS (vazias por enquanto) -->
+      <!-- OUTRAS PÁGINAS -->
       <section id="acervo" class="page"></section>
-      <section id="assinatura" class="page"></section>
+      <section id="assinatura" class="page">
+        <h2>Plano Premium</h2>
+        <button id="subscribe-btn">Assinar Premium</button>
+        <p id="premium-status"></p>
+      </section>
       <section id="config" class="page"></section>
       <section id="perfil" class="page"></section>
       <section id="indicacoes" class="page"></section>
@@ -100,34 +97,27 @@
     </div>
 
     <!-- COURSE PANEL -->
-<div id="course-panel" class="course-panel hidden">
-  <div class="panel-content">
-    <button class="close-btn" onclick="closeCourse()">X</button>
+    <div id="course-panel" class="course-panel hidden">
+      <div class="panel-content">
+        <button class="close-btn" onclick="closeCourse()">X</button>
+        <h2 id="course-title"></h2>
 
-    <h2 id="course-title"></h2>
+        <div class="progress-container">
+          <div id="progress-bar" class="progress-bar"></div>
+        </div>
+        <p id="progress-text"></p>
 
-   <div class="progress-container">
-  <div id="progress-bar" class="progress-bar"></div>
-</div>
-<p id="progress-text"></p>
-    
-    <ul id="module-list"></ul>
+        <ul id="module-list"></ul>
 
-    <button id="continue-btn" class="continue-btn">
-      Iniciar Curso
-    </button>
-  </div>
-</div>
+        <button id="continue-btn" class="continue-btn">Iniciar Curso</button>
+      </div>
+    </div>
 
-   <div id="acervo" class="locked">
-  <p>Conteúdo exclusivo para Premium</p>
-</div>
+  </main>
 
-<div id="assinatura" style="display: none;">
-  <h2>Plano Premium</h2>
-  <button id="subscribe-btn">Assinar Premium</button>
-  <p id="premium-status"></p>
-</div>
+  <script src="js/app.js"></script>
+</body>
+</html>
 </div>
 
 </body>
