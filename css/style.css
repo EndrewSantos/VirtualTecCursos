@@ -228,3 +228,44 @@ h1 {
   font-weight: 600;
   cursor: pointer;
 }
+/* TRILHA VISUAL */
+
+#module-list {
+  list-style: none;
+  padding: 0;
+}
+
+.module-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.module-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #1e293b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  transition: 0.3s;
+}
+
+.module-circle.completed {
+  background: #2563eb;
+}
+
+.module-content h4 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.module-content p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #94a3b8;
+}
