@@ -60,6 +60,13 @@ function openCourse(courseId) {
 
   title.innerText = course.title;
   moduleList.innerHTML = "";
+  const progressText = document.getElementById("progress-text");
+
+const totalModules = course.modules.length;
+const percentage = Math.floor((savedProgress / totalModules) * 100);
+
+progressBar.style.width = percentage + "%";
+progressText.innerText = `Progresso: ${percentage}%`;
 
 course.modules.forEach((module, index) => {
 
