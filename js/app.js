@@ -1,4 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+    // --- Navegação entre páginas ---
+  const menuItems = document.querySelectorAll(".menu-item");
+  const pages = document.querySelectorAll(".page");
+
+  function showPage(pageId) {
+    pages.forEach(p => p.classList.remove("active"));
+    document.getElementById(pageId).classList.add("active");
+
+    menuItems.forEach(item => item.classList.remove("active"));
+    document.querySelector(`[data-page="${pageId}"]`).classList.add("active");
+  }
+
+  menuItems.forEach(item => {
+    item.onclick = () => {
+      const page = item.dataset.page;
+      if (page) showPage(page);
+    };
+  });
   // PREMIUM
   let isPremium = localStorage.getItem("premium") === "true";
 
