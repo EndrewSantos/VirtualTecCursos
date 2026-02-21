@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // --- Navegação entre páginas ---
+  // === NAVEGAÇÃO ENTRE PÁGINAS ===
   const menuItems = document.querySelectorAll(".menu-item");
   const pages = document.querySelectorAll(".page");
 
@@ -18,50 +18,20 @@ document.addEventListener("DOMContentLoaded", () => {
       if (page) showPage(page);
     };
   });
-  // PREMIUM
-  let isPremium = localStorage.getItem("premium") === "true";
 
-  const subscribeBtn = document.getElementById("subscribe-btn");
-  const premiumStatus = document.getElementById("premium-status");
-  const acervoPage = document.getElementById("acervo");
-
-  function updatePremiumUI() {
-    premiumStatus.innerText = isPremium
-      ? "Plano atual: Premium 🚀"
-      : "Plano atual: Gratuito";
-  }
-
-  subscribeBtn.onclick = () => {
-    localStorage.setItem("premium", "true");
-    isPremium = true;
-    updatePremiumUI();
-    alert("Parabéns! Agora você é Premium 🚀");
-  };
-
-  function openAcervo() {
-    if (!isPremium) {
-      alert("O acervo completo é exclusivo para assinantes Premium 🔒");
-      return;
-    }
-    acervoPage.classList.add("active");
-  }
-
-  document.querySelector('[data-page="acervo"]').onclick = openAcervo;
-
-  updatePremiumUI();
-
-  // CURSOS
+  // === CURSOS GRATUITOS ===
   const courses = {
     excel: {
       title: "Excel Avançado",
       modules: [
-        { name: "Introdução ao Excel", desc: "Visão geral da interface." },
-        { name: "Fórmulas Avançadas", desc: "PROCV, SOMASES e funções." },
-        { name: "Tabelas Dinâmicas", desc: "Criação e personalização." },
+        { name: "Introdução", desc: "Visão geral do Excel." },
+        { name: "Fórmulas", desc: "PROCV e funções." },
+        { name: "Tabelas Dinâmicas", desc: "Criação de relatórios." },
         { name: "Dashboards", desc: "Gráficos profissionais." },
-        { name: "Automação VBA", desc: "Introdução à automação." }
+        { name: "Automação", desc: "Introdução ao VBA." }
       ]
     },
+
     logica: {
       title: "Lógica de Programação",
       modules: [
@@ -72,20 +42,22 @@ document.addEventListener("DOMContentLoaded", () => {
         { name: "Funções", desc: "Organização do código." }
       ]
     },
+
     html: {
       title: "HTML e CSS",
       modules: [
-        { name: "Estrutura HTML", desc: "Tags e semântica." },
-        { name: "Estilização CSS", desc: "Classes e IDs." },
+        { name: "Estrutura", desc: "Tags e semântica." },
+        { name: "Estilização", desc: "Classes e IDs." },
         { name: "Flexbox", desc: "Layouts modernos." },
         { name: "Grid", desc: "Sistema de colunas." },
         { name: "Responsividade", desc: "Media queries." }
       ]
     },
+
     marketing: {
       title: "Marketing Digital",
       modules: [
-        { name: "Fundamentos", desc: "Conceitos iniciais." },
+        { name: "Fundamentos", desc: "Conceitos básicos." },
         { name: "Redes Sociais", desc: "Estratégias." },
         { name: "Tráfego Pago", desc: "Anúncios." },
         { name: "Copywriting", desc: "Escrita persuasiva." },
