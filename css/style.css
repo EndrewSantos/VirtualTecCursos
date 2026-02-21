@@ -102,7 +102,7 @@ h1 {
 
 .course-grid {
   display: grid;
-  grid-template-columns: repeatrepeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeatrepeat(4, 1fr));
   gap: 20px;
 }
 
