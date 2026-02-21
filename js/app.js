@@ -2,21 +2,44 @@ const courses = {
   excel: {
     title: "Excel Avançado",
     modules: [
-      "Introdução ao Excel",
-      "Fórmulas Avançadas",
-      "Tabelas Dinâmicas",
-      "Dashboards",
-      "Automação com VBA"
+      { name: "Introdução ao Excel", desc: "Visão geral da interface e conceitos básicos." },
+      { name: "Fórmulas Avançadas", desc: "PROCV, SOMASES e funções lógicas." },
+      { name: "Tabelas Dinâmicas", desc: "Criação e personalização." },
+      { name: "Dashboards", desc: "Gráficos e indicadores visuais." },
+      { name: "Automação VBA", desc: "Introdução à automação." }
     ]
   },
+
   logica: {
     title: "Lógica de Programação",
     modules: [
-      "Algoritmos",
-      "Variáveis",
-      "Estruturas Condicionais",
-      "Loops",
-      "Funções"
+      { name: "Algoritmos", desc: "Conceitos fundamentais." },
+      { name: "Variáveis", desc: "Tipos e armazenamento." },
+      { name: "Condicionais", desc: "If, Else e Switch." },
+      { name: "Loops", desc: "For e While." },
+      { name: "Funções", desc: "Organização do código." }
+    ]
+  },
+
+  html: {
+    title: "HTML e CSS",
+    modules: [
+      { name: "Estrutura HTML", desc: "Tags e semântica." },
+      { name: "Estilização CSS", desc: "Classes e IDs." },
+      { name: "Flexbox", desc: "Layouts modernos." },
+      { name: "Grid", desc: "Sistema de colunas." },
+      { name: "Responsividade", desc: "Media queries." }
+    ]
+  },
+
+  marketing: {
+    title: "Marketing Digital",
+    modules: [
+      { name: "Fundamentos", desc: "Conceitos iniciais." },
+      { name: "Redes Sociais", desc: "Estratégias orgânicas." },
+      { name: "Tráfego Pago", desc: "Anúncios online." },
+      { name: "Copywriting", desc: "Escrita persuasiva." },
+      { name: "Funil de Vendas", desc: "Conversão e retenção." }
     ]
   }
 };
