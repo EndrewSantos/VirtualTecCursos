@@ -56,7 +56,7 @@ function openCourse(courseId) {
   const continueBtn = document.getElementById("continue-btn");
 
   const course = courses[courseId];
-  const savedProgress = localStorage.getItem(courseId) || 0;
+ const savedProgress = parseInt(localStorage.getItem(courseId)) || 0;
 
   title.innerText = course.title;
   moduleList.innerHTML = "";
