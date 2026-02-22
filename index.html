@@ -18,15 +18,12 @@
       <div class="menu-item active" data-page="cursos">Cursos</div>
       <div class="menu-item" data-page="acervo">Acervo</div>
       <div class="menu-item" data-page="assinatura">Assinatura</div>
+      <div class="menu-item" data-page="login">Login</div>
     </div>
 
     <div class="menu-section">
       <p class="menu-title">CONTA</p>
-      <div class="menu-item" data-page="config">Configurações</div>
       <div class="menu-item" data-page="perfil">Perfil</div>
-      <div class="menu-item" data-page="indicacoes">Indicações</div>
-      <div class="menu-item" data-page="termos">Termos</div>
-      <div class="menu-item" data-page="sobre">Sobre</div>
     </div>
   </aside>
 
@@ -41,23 +38,10 @@
         <p class="subtitle">Cursos gratuitos para aprendizado</p>
 
         <div class="course-grid">
-
           <div class="course-card" data-course="html">
             <span class="badge">Desenvolvimento</span>
             <h3>HTML e CSS</h3>
             <p>Crie sites modernos e responsivos.</p>
-          </div>
-
-          <div class="course-card" data-course="marketing">
-            <span class="badge">Negócios</span>
-            <h3>Marketing Digital</h3>
-            <p>Estratégias para crescer online.</p>
-          </div>
-
-          <div class="course-card" data-course="excel">
-            <span class="badge">Office</span>
-            <h3>Excel Avançado</h3>
-            <p>Fórmulas e dashboards profissionais.</p>
           </div>
 
           <div class="course-card" data-course="logica">
@@ -65,14 +49,13 @@
             <h3>Lógica de Programação</h3>
             <p>Fundamentos da programação.</p>
           </div>
-
         </div>
       </section>
 
       <!-- ACERVO -->
       <section id="acervo" class="page">
         <h2>Acervo</h2>
-        <p>Conteúdo exclusivo (adicione depois).</p>
+        <p>Conteúdo exclusivo.</p>
       </section>
 
       <!-- ASSINATURA -->
@@ -85,15 +68,25 @@
 
         <p class="trial-status"></p>
         <p class="trial-text">
-          Válido por 7 dias. Após, pagamento de R$ 19,90/mês.
+          Válido por 7 dias. Depois, R$ 19,90/mês.
         </p>
       </section>
 
-      <section id="config" class="page"></section>
-      <section id="perfil" class="page"></section>
-      <section id="indicacoes" class="page"></section>
-      <section id="termos" class="page"></section>
-      <section id="sobre" class="page"></section>
+      <!-- LOGIN -->
+      <section id="login" class="page">
+        <h2>Login</h2>
+
+        <input id="login-user" placeholder="Usuário">
+        <button id="login-btn">Entrar</button>
+
+        <p id="login-status"></p>
+      </section>
+
+      <!-- PERFIL -->
+      <section id="perfil" class="page">
+        <h2>Perfil</h2>
+        <p id="profile-info"></p>
+      </section>
 
     </div>
 
