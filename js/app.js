@@ -1,15 +1,47 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  
-    // BOTÃO DE TESTE GRÁTIS
+  // === TESTE GRÁTIS (7 DIAS) ===
   const trialBtn = document.getElementById("trial-btn");
+  const trialStatus = document.createElement("p");
+  trialStatus.classList.add("trial-status");
+  document.getElementById("assinatura").appendChild(trialStatus);
+
+  const TRIAL_KEY = "trial_start";
+  const DAYS = 7;
+
+  function getTrialDaysLeft() {
+    const start = localStorage.getItem(TRIAL_KEY);
+    if (!start) return DAYS;
+
+    const startDate = new Date(start);
+    const now = new Date();
+    const diff = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
+
+    return Math.max(DAYS - diff, 0);
+  }
+
+  function updateTrialUI() {
+    const daysLeft = getTrialDaysLeft();
+
+    if (daysLeft > 0) {
+      trialStatus.innerText = `Teste grátis ativo. ${daysLeft} dias restantes.`;
+      trialBtn.disabled = false;
+    } else {
+      trialStatus.innerText = "Teste expirado. Assine para continuar.";
+      trialBtn.disabled = true;
+    }
+  }
 
   if (trialBtn) {
     trialBtn.onclick = () => {
-      alert("Teste grátis iniciado! Você tem 7 dias de acesso.");
+      localStorage.setItem(TRIAL_KEY, new Date().toISOString());
+      alert("Teste grátis iniciado! Você tem 7 dias.");
+      updateTrialUI();
     };
   }
-  
+
+  updateTrialUI();
+
   // === NAVEGAÇÃO ENTRE PÁGINAS ===
   const menuItems = document.querySelectorAll(".menu-item");
   const pages = document.querySelectorAll(".page");
@@ -31,49 +63,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // === CURSOS GRATUITOS ===
   const courses = {
-    excel: {
-      title: "Excel Avançado",
-      modules: [
-        { name: "Introdução", desc: "Visão geral do Excel." },
-        { name: "Fórmulas", desc: "PROCV e funções." },
-        { name: "Tabelas Dinâmicas", desc: "Criação de relatórios." },
-        { name: "Dashboards", desc: "Gráficos profissionais." },
-        { name: "Automação", desc: "Introdução ao VBA." }
-      ]
-    },
+    excel: { title: "Excel Avançado", modules: [
+      { name: "Introdução", desc: "Visão geral do Excel." },
+      { name: "Fórmulas", desc: "PROCV e funções." },
+      { name: "Tabelas Dinâmicas", desc: "Relatórios." },
+      { name: "Dashboards", desc: "Gráficos." },
+      { name: "Automação", desc: "VBA básico." }
+    ]},
 
-    logica: {
-      title: "Lógica de Programação",
-      modules: [
-        { name: "Algoritmos", desc: "Conceitos fundamentais." },
-        { name: "Variáveis", desc: "Tipos e armazenamento." },
-        { name: "Condicionais", desc: "If e Else." },
-        { name: "Loops", desc: "For e While." },
-        { name: "Funções", desc: "Organização do código." }
-      ]
-    },
+    logica: { title: "Lógica de Programação", modules: [
+      { name: "Algoritmos", desc: "Fundamentos." },
+      { name: "Variáveis", desc: "Tipos." },
+      { name: "Condicionais", desc: "If e Else." },
+      { name: "Loops", desc: "For e While." },
+      { name: "Funções", desc: "Organização." }
+    ]},
 
-    html: {
-      title: "HTML e CSS",
-      modules: [
-        { name: "Estrutura", desc: "Tags e semântica." },
-        { name: "Estilização", desc: "Classes e IDs." },
-        { name: "Flexbox", desc: "Layouts modernos." },
-        { name: "Grid", desc: "Sistema de colunas." },
-        { name: "Responsividade", desc: "Media queries." }
-      ]
-    },
+    html: { title: "HTML e CSS", modules: [
+      { name: "Estrutura", desc: "Tags." },
+      { name: "Estilização", desc: "CSS." },
+      { name: "Flexbox", desc: "Layouts." },
+      { name: "Grid", desc: "Colunas." },
+      { name: "Responsividade", desc: "Media queries." }
+    ]},
 
-    marketing: {
-      title: "Marketing Digital",
-      modules: [
-        { name: "Fundamentos", desc: "Conceitos básicos." },
-        { name: "Redes Sociais", desc: "Estratégias." },
-        { name: "Tráfego Pago", desc: "Anúncios." },
-        { name: "Copywriting", desc: "Escrita persuasiva." },
-        { name: "Funil de Vendas", desc: "Conversão." }
-      ]
-    }
+    marketing: { title: "Marketing Digital", modules: [
+      { name: "Fundamentos", desc: "Conceitos." },
+      { name: "Redes", desc: "Estratégias." },
+      { name: "Tráfego", desc: "Anúncios." },
+      { name: "Copywriting", desc: "Escrita." },
+      { name: "Funil", desc: "Conversão." }
+    ]}
   };
 
   let currentCourse = null;
@@ -126,9 +146,9 @@ document.addEventListener("DOMContentLoaded", () => {
     progressBar.style.width = percentage + "%";
     progressText.innerText = `Progresso: ${percentage}%`;
 
-    if (savedProgress == 0) continueBtn.innerText = "Iniciar Curso";
-    else if (savedProgress < total) continueBtn.innerText = "Continuar";
-    else continueBtn.innerText = "Finalizar";
+    continueBtn.innerText =
+      savedProgress == 0 ? "Iniciar Curso" :
+      savedProgress < total ? "Continuar" : "Finalizar";
 
     panel.classList.remove("hidden");
   }
@@ -158,45 +178,3 @@ document.addEventListener("DOMContentLoaded", () => {
     openCourse(currentCourse);
   };
 });
-
-    // === TESTE GRÁTIS (7 DIAS) ===
-  const trialBtn = document.getElementById("trial-btn");
-  const trialStatus = document.createElement("p");
-  trialStatus.classList.add("trial-status");
-  document.getElementById("assinatura").appendChild(trialStatus);
-
-  const TRIAL_KEY = "trial_start";
-  const DAYS = 7;
-
-  function getTrialDaysLeft() {
-    const start = localStorage.getItem(TRIAL_KEY);
-    if (!start) return DAYS;
-
-    const startDate = new Date(start);
-    const now = new Date();
-    const diff = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
-
-    return Math.max(DAYS - diff, 0);
-  }
-
-  function updateTrialUI() {
-    const daysLeft = getTrialDaysLeft();
-
-    if (daysLeft > 0) {
-      trialStatus.innerText = `Teste grátis ativo. ${daysLeft} dias restantes.`;
-      trialBtn.disabled = false;
-    } else {
-      trialStatus.innerText = "Teste expirado. Assine para continuar.";
-      trialBtn.disabled = true;
-    }
-  }
-
-  if (trialBtn) {
-    trialBtn.onclick = () => {
-      localStorage.setItem(TRIAL_KEY, new Date().toISOString());
-      alert("Teste grátis iniciado! Você tem 7 dias.");
-      updateTrialUI();
-    };
-  }
-
-  updateTrialUI();
