@@ -59,18 +59,29 @@
       </section>
 
       <!-- ASSINATURA -->
-      <section id="assinatura" class="page">
-        <h2>Plano Premium</h2>
+     <section id="assinatura" class="page">
+  <h2>Plano Premium</h2>
 
-        <button class="btn-secondary" id="trial-btn">
-          Teste grátis
-        </button>
+  <div id="subscription-card">
 
-        <p class="trial-status"></p>
-        <p class="trial-text">
-          Válido por 7 dias. Depois, R$ 19,90/mês.
-        </p>
-      </section>
+    <!-- GRÁFICO -->
+    <svg id="renew-chart" width="160" height="160">
+      <circle cx="80" cy="80" r="70" class="chart-bg"></circle>
+      <circle cx="80" cy="80" r="70" class="chart-fill"></circle>
+      <text id="renew-date" x="80" y="90" text-anchor="middle"></text>
+    </svg>
+
+    <!-- BOTÃO -->
+    <button id="renew-btn" class="btn-secondary"></button>
+
+    <!-- HISTÓRICO -->
+    <div id="renew-history">
+      <h4>Histórico de renovações</h4>
+      <ul id="history-list"></ul>
+    </div>
+
+  </div>
+</section>
 
       <!-- LOGIN -->
       <section id="login" class="page">
