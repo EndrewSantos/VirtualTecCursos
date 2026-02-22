@@ -86,6 +86,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateTrial();
 
+  const closeBtn = document.getElementById("close-course");
+
+function closeCourse() {
+  document.getElementById("course-panel").classList.add("hidden");
+}
+
+if (closeBtn) {
+  closeBtn.onclick = closeCourse;
+}
+
   // === CURSOS E PROGRESSO ===
   const courses = {
     html: { title: "HTML e CSS", modules: 5 },
