@@ -81,6 +81,50 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("course-panel").classList.add("hidden")
     );
 
+  // ===== TRILHA VISUAL =====
+
+const lessonList = document.getElementById("lesson-list");
+const trailTitle = document.getElementById("trail-title");
+const startBtn = document.getElementById("start-course-btn");
+
+function renderTrail(courseId) {
+  const total = courses[courseId];
+  const progress = parseInt(localStorage.getItem(courseId)) || 0;
+
+  trailTitle.textContent = courseId.toUpperCase();
+  lessonList.innerHTML = "";
+  startBtn.classList.remove("hidden");
+
+  if (progress === 0) {
+    startBtn.textContent = "Começar";
+  } else if (progress < total) {
+    startBtn.textContent = "Continuar";
+  } else {
+    startBtn.textContent = "Finalizado";
+  }
+
+  for (let i = 1; i <= total; i++) {
+    const div = document.createElement("div");
+    div.classList.add("lesson-item");
+    if (i <= progress) div.classList.add("completed");
+
+    div.innerHTML = `
+      <span>Aula ${i}</span>
+      <span>${i <= progress ? "✔" : ""}</span>
+    `;
+
+    lessonList.appendChild(div);
+  }
+
+  startBtn.onclick = () => openCourse(courseId);
+}
+
+document.querySelectorAll(".course-card").forEach(card => {
+  card.addEventListener("click", () => {
+    renderTrail(card.dataset.course);
+  });
+});
+
   // ASSINATURA
   const renewBtn = document.getElementById("renew-btn");
   const chartFill = document.querySelector(".chart-fill");
