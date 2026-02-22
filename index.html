@@ -35,7 +35,7 @@
 
     <div id="page-content">
 
-      <!-- CURSOS (gratuitos) -->
+      <!-- CURSOS -->
       <section id="cursos" class="page active">
         <h1>Cursos Profissionalizantes</h1>
         <p class="subtitle">Cursos gratuitos para aprendizado</p>
@@ -69,24 +69,31 @@
         </div>
       </section>
 
-      <!-- ACERVO (pode colocar conteúdo depois) -->
+      <!-- ACERVO -->
       <section id="acervo" class="page">
         <h2>Acervo</h2>
-        <p>Conteúdo exclusivo (se quiser adicionar depois).</p>
+        <p>Conteúdo exclusivo (adicione depois).</p>
       </section>
 
-      <!-- ASSINATURA (opcional) -->
-   <section id="assinatura" class="page">
-  <h2>Plano Premium</h2>
+      <!-- ASSINATURA -->
+      <section id="assinatura" class="page">
+        <h2>Plano Premium</h2>
 
-  <button class="btn-secondary" id="trial-btn">
-    Teste grátis
-  </button>
+        <button class="btn-secondary" id="trial-btn">
+          Teste grátis
+        </button>
 
-  <p class="trial-text">
-    Válido durante 7 dias. Após, pagamento de R$ 19,90/mês.
-  </p>
-</section>
+        <p class="trial-status"></p>
+        <p class="trial-text">
+          Válido por 7 dias. Após, pagamento de R$ 19,90/mês.
+        </p>
+      </section>
+
+      <section id="config" class="page"></section>
+      <section id="perfil" class="page"></section>
+      <section id="indicacoes" class="page"></section>
+      <section id="termos" class="page"></section>
+      <section id="sobre" class="page"></section>
 
     </div>
 
@@ -94,6 +101,7 @@
     <div id="course-panel" class="course-panel hidden">
       <div class="panel-content">
         <button class="close-btn" onclick="closeCourse()">X</button>
+
         <h2 id="course-title"></h2>
 
         <div class="progress-container">
@@ -103,7 +111,9 @@
 
         <ul id="module-list"></ul>
 
-        <button id="continue-btn" class="continue-btn">Iniciar Curso</button>
+        <button id="continue-btn" class="continue-btn">
+          Iniciar Curso
+        </button>
       </div>
     </div>
 
