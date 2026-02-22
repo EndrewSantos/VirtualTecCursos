@@ -242,6 +242,101 @@ if (closeBtn) {
     ]}
   };
 
+    // === ASSINATURA COM GRÁFICO ===
+  const renewBtn = document.getElementById("renew-btn");
+  const chartFill = document.querySelector(".chart-fill");
+  const renewDateText = document.getElementById("renew-date");
+  const historyList = document.getElementById("history-list");
+
+  const SUB_KEY = "subscription";
+  const DAYS = 30;
+  const ALERT_BEFORE = 5;
+
+  function loadSubscription() {
+    return JSON.parse(localStorage.getItem(SUB_KEY)) || null;
+  }
+
+  function saveSubscription(data) {
+    localStorage.setItem(SUB_KEY, JSON.stringify(data));
+  }
+
+  function addHistory(date) {
+    const sub = loadSubscription() || { history: [] };
+    sub.history.unshift(date);
+    saveSubscription(sub);
+    renderHistory(sub.history);
+  }
+
+  function renderHistory(history) {
+    historyList.innerHTML = "";
+    history.forEach(item => {
+      const li = document.createElement("li");
+      li.innerText = `Renovado em: ${item}`;
+      historyList.appendChild(li);
+    });
+  }
+
+  function getRenewalDate(start) {
+    const d = new Date(start);
+    d.setMonth(d.getMonth() + 1);
+    return d;
+  }
+
+  function updateSubscriptionUI() {
+    const sub = loadSubscription();
+    if (!sub) {
+      renewBtn.innerText = "Assinar";
+      renewDateText.innerText = "Sem assinatura";
+      chartFill.style.strokeDashoffset = 440;
+      return;
+    }
+
+    const now = new Date();
+    const renew = new Date(sub.renewal);
+
+    const total = DAYS * 24 * 60 * 60 * 1000;
+    const elapsed = now - new Date(sub.start);
+    const progress = Math.min(elapsed / total, 1);
+
+    const offset = 440 - (440 * progress);
+    chartFill.style.strokeDashoffset = offset;
+
+    renewDateText.innerText = renew.toLocaleDateString();
+
+    const daysLeft = Math.ceil((renew - now) / (1000*60*60*24));
+
+    if (daysLeft <= ALERT_BEFORE) {
+      renewBtn.innerText = "Renovar";
+      renewBtn.disabled = false;
+    } else {
+      renewBtn.innerText = `Renova em ${daysLeft} dias`;
+      renewBtn.disabled = true;
+    }
+
+    renderHistory(sub.history || []);
+  }
+
+  if (renewBtn) {
+    renewBtn.onclick = () => {
+      const now = new Date();
+      const renewal = getRenewalDate(now);
+
+      const data = {
+        start: now.toISOString(),
+        renewal: renewal.toISOString(),
+        history: []
+      };
+
+      saveSubscription(data);
+      addHistory(now.toLocaleDateString());
+
+      alert("Assinatura ativada!");
+      updateSubscriptionUI();
+    };
+  }
+
+  updateSubscriptionUI();
+
   let currentCourse = null;
 
   function openCourse(courseId) {
