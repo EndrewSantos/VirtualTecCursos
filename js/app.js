@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  // NAVEGAÇÃO
+  /* =========================
+     NAVEGAÇÃO
+  ========================== */
   const menuItems = document.querySelectorAll(".menu-item");
   const pages = document.querySelectorAll(".page");
 
@@ -18,7 +20,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // LOGIN
+
+  /* =========================
+     LOGIN
+  ========================== */
   const loginBtn = document.getElementById("login-btn");
   const loginUser = document.getElementById("login-user");
   const loginStatus = document.getElementById("login-status");
@@ -39,7 +44,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   updateProfile();
 
-  // CURSOS
+
+  /* =========================
+     CURSOS + TRILHA
+  ========================== */
+
   const courses = {
     html: 5,
     logica: 5,
@@ -49,31 +58,89 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let currentCourse = null;
 
+  const lessonList = document.getElementById("lesson-list");
+  const trailTitle = document.getElementById("trail-title");
+  const startBtn = document.getElementById("start-course-btn");
+
+  function renderTrail(courseId) {
+    currentCourse = courseId;
+
+    const total = courses[courseId];
+    const progress = parseInt(localStorage.getItem(courseId)) || 0;
+
+    trailTitle.textContent = courseId.toUpperCase();
+    lessonList.innerHTML = "";
+    startBtn.classList.remove("hidden");
+
+    if (progress === 0) {
+      startBtn.textContent = "Começar";
+    } else if (progress < total) {
+      startBtn.textContent = "Continuar";
+    } else {
+      startBtn.textContent = "Finalizado";
+    }
+
+    for (let i = 1; i <= total; i++) {
+      const div = document.createElement("div");
+      div.classList.add("lesson-item");
+
+      if (i <= progress) {
+        div.classList.add("completed");
+      }
+
+      div.innerHTML = `
+        <span>Aula ${i}</span>
+        <span>${i <= progress ? "✔" : ""}</span>
+      `;
+
+      lessonList.appendChild(div);
+    }
+  }
+
+  // clique no card → só renderiza trilha
+  document.querySelectorAll(".course-card").forEach(card => {
+    card.addEventListener("click", () => {
+      renderTrail(card.dataset.course);
+    });
+  });
+
+
+  /* =========================
+     MODAL
+  ========================== */
+
   function openCourse(id) {
-    currentCourse = id;
     const saved = parseInt(localStorage.getItem(id)) || 0;
     const total = courses[id];
 
     document.getElementById("course-title").textContent = id.toUpperCase();
-    document.getElementById("progress-bar").style.width = (saved / total) * 100 + "%";
-    document.getElementById("progress-text").textContent = saved + "/" + total;
+    document.getElementById("progress-bar").style.width =
+      (saved / total) * 100 + "%";
+    document.getElementById("progress-text").textContent =
+      saved + "/" + total;
+
     document.getElementById("course-panel").classList.remove("hidden");
   }
 
-  document.querySelectorAll(".course-card").forEach(card => {
-    card.addEventListener("click", () => {
-      openCourse(card.dataset.course);
-    });
+  // botão Começar / Continuar
+  startBtn.addEventListener("click", () => {
+    if (!currentCourse) return;
+    openCourse(currentCourse);
   });
 
+  // botão Continuar dentro do modal
   document.getElementById("continue-btn").addEventListener("click", () => {
     if (!currentCourse) return;
+
     let progress = parseInt(localStorage.getItem(currentCourse)) || 0;
+
     if (progress < courses[currentCourse]) {
       progress++;
       localStorage.setItem(currentCourse, progress);
-      openCourse(currentCourse);
     }
+
+    renderTrail(currentCourse);
+    openCourse(currentCourse);
   });
 
   document.getElementById("close-course")
@@ -81,51 +148,11 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("course-panel").classList.add("hidden")
     );
 
-  // ===== TRILHA VISUAL =====
 
-const lessonList = document.getElementById("lesson-list");
-const trailTitle = document.getElementById("trail-title");
-const startBtn = document.getElementById("start-course-btn");
+  /* =========================
+     ASSINATURA
+  ========================== */
 
-function renderTrail(courseId) {
-  const total = courses[courseId];
-  const progress = parseInt(localStorage.getItem(courseId)) || 0;
-
-  trailTitle.textContent = courseId.toUpperCase();
-  lessonList.innerHTML = "";
-  startBtn.classList.remove("hidden");
-
-  if (progress === 0) {
-    startBtn.textContent = "Começar";
-  } else if (progress < total) {
-    startBtn.textContent = "Continuar";
-  } else {
-    startBtn.textContent = "Finalizado";
-  }
-
-  for (let i = 1; i <= total; i++) {
-    const div = document.createElement("div");
-    div.classList.add("lesson-item");
-    if (i <= progress) div.classList.add("completed");
-
-    div.innerHTML = `
-      <span>Aula ${i}</span>
-      <span>${i <= progress ? "✔" : ""}</span>
-    `;
-
-    lessonList.appendChild(div);
-  }
-
-  startBtn.onclick = () => openCourse(courseId);
-}
-
-document.querySelectorAll(".course-card").forEach(card => {
-  card.addEventListener("click", () => {
-    renderTrail(card.dataset.course);
-  });
-});
-
-  // ASSINATURA
   const renewBtn = document.getElementById("renew-btn");
   const chartFill = document.querySelector(".chart-fill");
   const renewDateText = document.getElementById("renew-date");
@@ -143,8 +170,11 @@ document.querySelectorAll(".course-card").forEach(card => {
     const elapsed = now - new Date(sub.start);
     const progress = Math.min(elapsed / total, 1);
 
-    chartFill.style.strokeDashoffset = CIRC - (CIRC * progress);
-    renewDateText.textContent = renew.toLocaleDateString();
+    chartFill.style.strokeDashoffset =
+      CIRC - (CIRC * progress);
+
+    renewDateText.textContent =
+      renew.toLocaleDateString();
 
     historyList.innerHTML = "";
     sub.history.forEach(h => {
