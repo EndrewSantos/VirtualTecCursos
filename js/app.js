@@ -108,20 +108,30 @@ document.addEventListener("DOMContentLoaded", function () {
   /* =========================
      MODAL
   ========================== */
+function openCourse(id) {
+  const saved = parseInt(localStorage.getItem(id)) || 0;
+  const total = courses[id];
 
-  function openCourse(id) {
-    const saved = parseInt(localStorage.getItem(id)) || 0;
-    const total = courses[id];
+  const progressBar = document.getElementById("progress-bar");
+  const progressText = document.getElementById("progress-text");
+  const continueBtn = document.getElementById("continue-btn");
 
-    document.getElementById("course-title").textContent = id.toUpperCase();
-    document.getElementById("progress-bar").style.width =
-      (saved / total) * 100 + "%";
-    document.getElementById("progress-text").textContent =
-      saved + "/" + total;
+  document.getElementById("course-title").textContent = id.toUpperCase();
 
-    document.getElementById("course-panel").classList.remove("hidden");
+  progressBar.style.width = (saved / total) * 100 + "%";
+  progressText.textContent = saved + "/" + total;
+
+  // 🔥 AQUI ESTÁ A CORREÇÃO
+  if (saved >= total) {
+    continueBtn.textContent = "Curso Finalizado";
+    continueBtn.disabled = true;
+  } else {
+    continueBtn.textContent = "Continuar";
+    continueBtn.disabled = false;
   }
 
+  document.getElementById("course-panel").classList.remove("hidden");
+}
   // botão Começar / Continuar
   startBtn.addEventListener("click", () => {
     if (!currentCourse) return;
