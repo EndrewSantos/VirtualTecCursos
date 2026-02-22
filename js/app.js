@@ -2,9 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // === TESTE GRÁTIS (7 DIAS) ===
   const trialBtn = document.getElementById("trial-btn");
-  const trialStatus = document.createElement("p");
-  trialStatus.classList.add("trial-status");
-  document.getElementById("assinatura").appendChild(trialStatus);
+  const trialStatus = document.querySelector(".trial-status");
 
   const TRIAL_KEY = "trial_start";
   const DAYS = 7;
