@@ -1,46 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-      // === TESTE GRÁTIS (7 DIAS) ===
-  const trialBtn = document.getElementById("trial-btn");
-  const trialStatus = document.createElement("p");
-  trialStatus.classList.add("trial-status");
-  document.getElementById("assinatura").appendChild(trialStatus);
-
-  const TRIAL_KEY = "trial_start";
-  const DAYS = 7;
-
-  function getTrialDaysLeft() {
-    const start = localStorage.getItem(TRIAL_KEY);
-    if (!start) return DAYS;
-
-    const startDate = new Date(start);
-    const now = new Date();
-    const diff = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
-
-    return Math.max(DAYS - diff, 0);
-  }
-
-  function updateTrialUI() {
-    const daysLeft = getTrialDaysLeft();
-
-    if (daysLeft > 0) {
-      trialStatus.innerText = `Teste grátis ativo. ${daysLeft} dias restantes.`;
-      trialBtn.disabled = false;
-    } else {
-      trialStatus.innerText = "Teste expirado. Assine para continuar.";
-      trialBtn.disabled = true;
-    }
-  }
-
-  if (trialBtn) {
-    trialBtn.onclick = () => {
-      localStorage.setItem(TRIAL_KEY, new Date().toISOString());
-      alert("Teste grátis iniciado! Você tem 7 dias.");
-      updateTrialUI();
-    };
-  }
-
-  updateTrialUI();
+  
     // BOTÃO DE TESTE GRÁTIS
   const trialBtn = document.getElementById("trial-btn");
 
@@ -198,3 +158,45 @@ document.addEventListener("DOMContentLoaded", () => {
     openCourse(currentCourse);
   };
 });
+
+    // === TESTE GRÁTIS (7 DIAS) ===
+  const trialBtn = document.getElementById("trial-btn");
+  const trialStatus = document.createElement("p");
+  trialStatus.classList.add("trial-status");
+  document.getElementById("assinatura").appendChild(trialStatus);
+
+  const TRIAL_KEY = "trial_start";
+  const DAYS = 7;
+
+  function getTrialDaysLeft() {
+    const start = localStorage.getItem(TRIAL_KEY);
+    if (!start) return DAYS;
+
+    const startDate = new Date(start);
+    const now = new Date();
+    const diff = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
+
+    return Math.max(DAYS - diff, 0);
+  }
+
+  function updateTrialUI() {
+    const daysLeft = getTrialDaysLeft();
+
+    if (daysLeft > 0) {
+      trialStatus.innerText = `Teste grátis ativo. ${daysLeft} dias restantes.`;
+      trialBtn.disabled = false;
+    } else {
+      trialStatus.innerText = "Teste expirado. Assine para continuar.";
+      trialBtn.disabled = true;
+    }
+  }
+
+  if (trialBtn) {
+    trialBtn.onclick = () => {
+      localStorage.setItem(TRIAL_KEY, new Date().toISOString());
+      alert("Teste grátis iniciado! Você tem 7 dias.");
+      updateTrialUI();
+    };
+  }
+
+  updateTrialUI();
