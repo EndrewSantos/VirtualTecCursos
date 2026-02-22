@@ -1,5 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    // BOTÃO DE TESTE GRÁTIS
+  const trialBtn = document.getElementById("trial-btn");
+
+  if (trialBtn) {
+    trialBtn.onclick = () => {
+      alert("Teste grátis iniciado! Você tem 7 dias de acesso.");
+    };
+  }
+  
   // === NAVEGAÇÃO ENTRE PÁGINAS ===
   const menuItems = document.querySelectorAll(".menu-item");
   const pages = document.querySelectorAll(".page");
