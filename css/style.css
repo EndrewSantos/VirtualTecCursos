@@ -12,7 +12,6 @@ body {
 }
 
 /* SIDEBAR */
-
 .sidebar {
   width: 260px;
   height: 100vh;
@@ -49,37 +48,21 @@ body {
 }
 
 .menu-item:hover {
-  background-color: #1e293b;
+  background: #1e293b;
 }
 
 .menu-item.active {
-  background-color: #2563eb;
+  background: #2563eb;
+  color: white;
 }
 
 /* MAIN */
-
 .main {
   flex: 1;
   padding: 30px 40px;
 }
 
-/* TOPBAR */
-
-.topbar {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 30px;
-}
-
-.user-pill {
-  background-color: #1e293b;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 14px;
-}
-
 /* PAGE */
-
 .page {
   display: none;
 }
@@ -99,19 +82,19 @@ h1 {
 }
 
 /* COURSE GRID */
-
 .course-grid {
   display: grid;
-  grid-template-columns: repeatrepeat(4, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
 .course-card {
-  background-color: #111827;
+  background: #111827;
   padding: 20px;
   border-radius: 12px;
   border: 1px solid #1f2937;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .course-card:hover {
@@ -120,7 +103,7 @@ h1 {
 }
 
 .badge {
-  background-color: #1e293b;
+  background: #1e293b;
   padding: 4px 10px;
   border-radius: 20px;
   font-size: 12px;
@@ -136,28 +119,13 @@ h1 {
 .course-card p {
   font-size: 14px;
   color: #94a3b8;
-  margin-bottom: 15px;
 }
 
-.course-card hr {
-  border: none;
-  height: 1px;
-  background-color: #1f2937;
-  margin-bottom: 12px;
-}
-
-.course-info {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  color: #64748b;
-}
 /* COURSE PANEL */
-
 .course-panel {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -179,14 +147,14 @@ h1 {
   float: right;
   background: none;
   border: none;
-  color: #fff;
+  color: white;
   cursor: pointer;
 }
 
 .progress-container {
   width: 100%;
   height: 14px;
-  background: #1e1e1e;
+  background: #1e293b;
   border-radius: 20px;
   overflow: hidden;
   margin: 15px 0;
@@ -202,43 +170,12 @@ h1 {
 #progress-text {
   font-size: 14px;
   margin-bottom: 10px;
-  color: #aaa;
+  color: #94a3b8;
 }
 
 #module-list {
   list-style: none;
   margin-bottom: 20px;
-}
-
-#module-list li {
-  padding: 8px;
-  margin-bottom: 6px;
-  background: #111827;
-  border-radius: 6px;
-  font-size: 14px;
-}
-
-#module-list li.completed {
-  background: #1e293b;
-  text-decoration: line-through;
-  opacity: 0.6;
-}
-
-.continue-btn {
-  width: 100%;
-  padding: 12px;
-  background: #2563eb;
-  border: none;
-  border-radius: 8px;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-}
-/* TRILHA VISUAL */
-
-#module-list {
-  list-style: none;
-  padding: 0;
 }
 
 .module-item {
@@ -257,8 +194,6 @@ h1 {
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  color: white;
-  transition: 0.3s;
 }
 
 .module-circle.completed {
@@ -275,13 +210,10 @@ h1 {
   font-size: 13px;
   color: #94a3b8;
 }
-.locked {
-  opacity: 0.5;
-  pointer-events: none;
-}
 
+/* PREMIUM / TRIAL */
 .btn-secondary {
-  background: var(--cor-secundaria);
+  background: #2563eb;
   color: white;
   border: none;
   padding: 12px 24px;
@@ -290,14 +222,14 @@ h1 {
   cursor: pointer;
 }
 
-.trial-text {
-  font-size: 12px;
-  color: #777;
-  margin-top: 6px;
-}
-
+.trial-text,
 .trial-status {
   font-size: 12px;
   color: #666;
   margin-top: 6px;
+}
+
+.locked {
+  opacity: 0.5;
+  pointer-events: none;
 }
