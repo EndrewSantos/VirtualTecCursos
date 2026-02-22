@@ -2,68 +2,76 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Plataforma</title>
+  <title>VirtualTec - Plataforma</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+
 <body>
 
-  <div class="sidebar">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
     <div class="logo">VirtualTec</div>
 
     <div class="menu-section">
-      <div class="menu-title">Menu</div>
+      <div class="menu-title">PLATAFORMA</div>
 
       <div class="menu-item active" data-page="home">Home</div>
       <div class="menu-item" data-page="cursos">Cursos</div>
       <div class="menu-item" data-page="assinatura">Assinatura</div>
       <div class="menu-item" data-page="perfil">Perfil</div>
     </div>
-  </div>
+  </aside>
 
+  <!-- ÁREA PRINCIPAL -->
   <div class="main">
-    <!-- todas as sections aqui dentro -->
+
+    <!-- TOPO -->
+    <header class="topbar">
+      <h2>VirtualTec</h2>
+      <button class="user-btn">Usuário</button>
+    </header>
+
+    <!-- CONTEÚDO -->
+    <main class="content">
+
+      <section id="home" class="page active">
+        <h2>Bem-vindo</h2>
+        <input type="text" id="login-user" placeholder="Digite seu nome">
+        <button id="login-btn">Login</button>
+        <p id="login-status"></p>
+      </section>
+
+      <section id="cursos" class="page">
+        <div class="course-card" data-course="html">HTML e CSS</div>
+        <div class="course-card" data-course="logica">Lógica</div>
+        <div class="course-card" data-course="excel">Excel</div>
+        <div class="course-card" data-course="marketing">Marketing</div>
+      </section>
+
+      <section id="assinatura" class="page">
+        <h2>Plano Premium</h2>
+
+        <svg width="160" height="160">
+          <circle cx="80" cy="80" r="70" class="chart-bg"></circle>
+          <circle cx="80" cy="80" r="70" class="chart-fill"></circle>
+          <text id="renew-date" x="80" y="90" text-anchor="middle"></text>
+        </svg>
+
+        <button id="renew-btn">Assinar</button>
+
+        <h4>Histórico</h4>
+        <ul id="history-list"></ul>
+      </section>
+
+      <section id="perfil" class="page">
+        <p id="profile-info"></p>
+      </section>
+
+    </main>
+
   </div>
 
-  <script src="js/app.js"></script>
-</body>
-  <main class="content">
-
-    <section id="home" class="page active">
-      <h2>Bem-vindo</h2>
-      <input type="text" id="login-user" placeholder="Digite seu nome">
-      <button id="login-btn">Login</button>
-      <p id="login-status"></p>
-    </section>
-
-    <section id="cursos" class="page">
-      <div class="course-card" data-course="html">HTML e CSS</div>
-      <div class="course-card" data-course="logica">Lógica</div>
-      <div class="course-card" data-course="excel">Excel</div>
-      <div class="course-card" data-course="marketing">Marketing</div>
-    </section>
-
-    <section id="assinatura" class="page">
-      <h2>Plano Premium</h2>
-
-      <svg width="160" height="160">
-        <circle cx="80" cy="80" r="70" class="chart-bg"></circle>
-        <circle cx="80" cy="80" r="70" class="chart-fill"></circle>
-        <text id="renew-date" x="80" y="90" text-anchor="middle"></text>
-      </svg>
-
-      <button id="renew-btn">Assinar</button>
-
-      <h4>Histórico</h4>
-      <ul id="history-list"></ul>
-    </section>
-
-    <section id="perfil" class="page">
-      <p id="profile-info"></p>
-    </section>
-
-  </main>
-
+  <!-- MODAL DO CURSO -->
   <div id="course-panel" class="hidden">
     <div class="panel-box">
       <button id="close-course">X</button>
