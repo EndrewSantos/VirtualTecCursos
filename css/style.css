@@ -171,3 +171,46 @@ body {
 #renew-date {
   fill: white;
 }
+
+/* ===== TRILHA ===== */
+
+.trail-container {
+  background: #111827;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.trail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.start-btn {
+  padding: 8px 16px;
+  background: #2563eb;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.lesson-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lesson-item {
+  background: #1e293b;
+  padding: 12px 16px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.lesson-item.completed {
+  background: #14532d;
+}
